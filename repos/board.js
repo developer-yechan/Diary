@@ -12,4 +12,22 @@ const createPost = async (postDto) => {
   return post;
 };
 
-module.exports = { createPost };
+const readPosts = async () => {
+  const posts = await models.board.findAll({
+    attributes: ["title", "weather", "createdAt"],
+    order: [["createdAt", "DESC"]],
+  });
+  return posts;
+};
+
+const readPost = async (id) => {
+  const posts = await models.board.findAll({
+    attributes: ["title", "weather", "content", "createdAt"],
+    where: {
+      id,
+    },
+  });
+  return posts;
+};
+
+module.exports = { createPost, readPosts, readPost };

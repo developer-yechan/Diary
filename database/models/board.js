@@ -38,8 +38,8 @@ module.exports = class Board extends Sequelize.Model {
         modelName: "board",
         tableName: "boards",
         paranoid: true,
-        charset: "utf8",
-        collate: "utf8_general_ci",
+        charset: "utf8mb4",
+        collate: "utf8mb4_unicode_ci",
       }
     );
   }
