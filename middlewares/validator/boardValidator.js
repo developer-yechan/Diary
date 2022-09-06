@@ -29,4 +29,4 @@ const boardValidator = () => {
   ];
 };
 
-module.exports = { boardValidator };
+module.exports = boardValidator;

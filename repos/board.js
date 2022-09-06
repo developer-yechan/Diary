@@ -12,7 +12,7 @@ const createPost = async (postDto) => {
   return post;
 };
 
-const readPosts = async () => {
+const findPosts = async () => {
   const posts = await models.board.findAll({
     attributes: ["title", "weather", "createdAt"],
     order: [["createdAt", "DESC"]],
@@ -20,9 +20,9 @@ const readPosts = async () => {
   return posts;
 };
 
-const readPost = async (id) => {
-  const posts = await models.board.findAll({
-    attributes: ["title", "weather", "content", "createdAt"],
+const findPost = async (id) => {
+  const posts = await models.board.findOne({
+    attributes: ["title", "weather", "password", "content", "createdAt"],
     where: {
       id,
     },
@@ -30,4 +30,26 @@ const readPost = async (id) => {
   return posts;
 };
 
-module.exports = { createPost, readPosts, readPost };
+const updatePost = async (postDto) => {
+  const posts = await models.board.update(
+    {
+      title: postDto.title,
+      content: postDto.content,
+      password: postDto.password,
+      weather: postDto.weather,
+    },
+    {
+      where: {
+        id: postDto.id,
+      },
+    }
+  );
+  return posts;
+};
+
+const deletePost = async (id) => {
+  const result = await models.board.destroy({ where: { id } });
+  return result;
+};
+
+module.exports = { createPost, findPosts, findPost, updatePost, deletePost };
