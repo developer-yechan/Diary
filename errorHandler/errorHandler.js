@@ -1,5 +1,5 @@
-const errorHandler = (err, res) => {
-  console.log("\x1b[33m%s\x1b[0m", error.stack);
+const errorHandler = (err, req, res, next) => {
+  console.log("\x1b[33m%s\x1b[0m", err.stack);
 
   const errorMessage = {
     error: {
@@ -12,4 +12,4 @@ const errorHandler = (err, res) => {
   return res.status(400).json(errorMessage);
 };
 
-module.exports = { errorHandler };
+module.exports = errorHandler;

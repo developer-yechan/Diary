@@ -26,6 +26,10 @@ const createPost = async (req, res, next) => {
 const readPosts = async (req, res, next) => {
   try {
     const offset = Number(req.query.offset);
+    if (isNaN(offset)) {
+      throw new Error("offset 값은 숫자여야 합니다.");
+    }
+    console.log(offset, 234234);
     const posts = await boardRepo.findPosts(offset);
     return res.status(200).json(posts);
   } catch (err) {

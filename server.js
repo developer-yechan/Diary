@@ -8,7 +8,7 @@ const dotenv = require("dotenv");
 const routes = require("./routes");
 const { swaggerUi, specs } = require("./swagger/swagger");
 // const errorCodes = require("./codes/errorCodes");
-const { errorHandler } = require("./errorHandler/errorHandler");
+const errorHandler = require("./errorHandler/errorHandler");
 dotenv.config();
 
 const app = express();

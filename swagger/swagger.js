@@ -8,8 +8,8 @@ const options = {
     openapi: "3.0.0",
     info: {
       version: "1.0.0",
-      title: "Community-H swagger",
-      description: "Waynehills Community service API Docs",
+      title: "익명 게시판 swagger API 문서",
+      description: "Thingsflow 익명 게시판 service API Docs",
     },
     servers: [
       {
