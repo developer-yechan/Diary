@@ -61,7 +61,7 @@ const updatePost = async (req, res, next) => {
       throw new Error("내용이 변경되지 않았습니다.");
     }
     return res
-      .status(204)
+      .status(200)
       .json({ message: "수정 내용이 성공적으로 반영됐습니다." });
   } catch (err) {
     next(err);
@@ -74,7 +74,7 @@ const deletePost = async (req, res, next) => {
     if (deletePost[0] === 0) {
       throw new Error("내용이 변경되지 않았습니다.");
     }
-    return res.status(204).json({ message: "포스팅이 삭제 됐습니다." });
+    return res.status(200).json({ message: "포스팅이 삭제 됐습니다." });
   } catch (err) {
     next(err);
   }
