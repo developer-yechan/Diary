@@ -22,7 +22,8 @@ const createPost = async (req, res, next) => {
 
 const readPosts = async (req, res, next) => {
   try {
-    const posts = await boardRepo.readPosts();
+    const offset = Number(req.query.offset);
+    const posts = await boardRepo.findPosts(offset);
     return res.status(200).json(posts);
   } catch (err) {
     next(err);
@@ -32,7 +33,7 @@ const readPosts = async (req, res, next) => {
 const readPost = async (req, res, next) => {
   try {
     const postId = req.params.id;
-    const post = await boardRepo.readPost(postId);
+    const post = await boardRepo.findPost(postId);
     return res.status(200).json(post);
   } catch (err) {
     next(err);

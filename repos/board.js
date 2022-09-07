@@ -12,9 +12,11 @@ const createPost = async (postDto) => {
   return post;
 };
 
-const findPosts = async () => {
+const findPosts = async (offset) => {
   const posts = await models.board.findAll({
     attributes: ["title", "weather", "createdAt"],
+    offset,
+    limit: 20,
     order: [["createdAt", "DESC"]],
   });
   return posts;
