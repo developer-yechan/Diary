@@ -3,15 +3,18 @@ const { v4: uuidv4 } = require("uuid");
 const boardRepo = require("../repos/board");
 const bcrypt = require("bcrypt");
 const errorCodes = require("../codes/errorCodes");
+const axios = require("axios");
 
 const createPost = async (req, res, next) => {
   try {
-    const { title, content, password, weather } = req.body;
+    const { title, content, password } = req.body;
+    const weather = await getWeather();
+    const weatherIcon = weather.data.current.condition.icon;
     const postDto = {
       title,
       content,
       password: await bcrypt.hash(password, 10),
-      weather,
+      weather: weatherIcon,
     };
     const post = await boardRepo.createPost(postDto);
     return res.status(201).json(post);
@@ -71,6 +74,20 @@ const deletePost = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+const getWeather = async () => {
+  const apiKey = "1853b3040cc447e091114348220609";
+  const location = "Seoul";
+  const requestUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=no`;
+  const result = await axios({
+    method: "GET",
+    url: requestUrl,
+    headers: {
+      "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+    },
+  });
+  return result;
 };
 
 module.exports = { createPost, readPosts, readPost, updatePost, deletePost };

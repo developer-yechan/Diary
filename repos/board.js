@@ -1,5 +1,6 @@
 const models = require("../database/models");
 const { v4: uuidv4 } = require("uuid");
+const { notExistingPost } = require("../codes/errorCodes");
 
 const createPost = async (postDto) => {
   const post = await models.board.create({
