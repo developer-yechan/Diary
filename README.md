@@ -79,13 +79,13 @@
 
 - 전체조회는 복수형으로 작성합니다.
 
-| 요청 내용  | service | example | repo | example |
-| --- | --- | --- | --- | --- |
-| 생성 | add | addPost | create | createPost |
-| 조회 | get | getPost | find요청객체 | findPost |
-| 전체조회 | get | getPosts | find요청객체s | findPosts |
-| 수정 | set | setPost | update | updatePost |
-| 삭제 | delete | deletePost | destroy | destroyPost |
+| 요청 내용  | service | repo |
+| --- |--- | --- |
+| 생성 | createPost | createPost |
+| 조회 | readPost | findPost |
+| 전체조회 | readPosts | findPosts |
+| 수정 | updatePost | updatePost |
+| 삭제 | deletePost | deletePost |
 
 ### ✔ 주석
 
@@ -98,35 +98,36 @@
 [깃 커밋 컨벤션 참고 사이트](https://overcome-the-limits.tistory.com/entry/협업-협업을-위한-기본적인-git-커밋컨벤션-설정하기)
 
 # 🗝 ERD
-![Untitled](https://user-images.githubusercontent.com/80232260/188364873-66642971-d272-4fac-bdfd-a6fa8d2815b7.png)
+![image](https://user-images.githubusercontent.com/99064214/189023928-7ccc613d-394f-4b3c-9ee8-1d90123b2d8e.png)
 
 # 🗂 폴더 구조
-![image](https://user-images.githubusercontent.com/80232260/188411428-3d51c7d1-ca2e-4ad1-b3b3-b79854cc9ec2.png)
+![image](https://user-images.githubusercontent.com/99064214/189024085-780f156e-1beb-46be-91d4-6a4159d47785.png)
+
 
 # ⚙ 패키지
 
 ```json
 {
-  "name": "01-community-h",
+  "name": "anonymous-forum",
   "version": "1.0.0",
-  "description": "community",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "npx cross-env NODE_ENV=test mocha __test__/*.test.js",
+    "test": "npx cross-env NODE_ENV=test mocha __tests__/*.test.js",
     "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pre-onboarding-4th-team-H/01-Community-H"
+    "url": "git+https://github.com/developer-yechan/Anonymous-Forum.git"
   },
-  "keywords": [],
-  "author": "pre-onboarding-4th-team-H",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pre-onboarding-4th-team-H/01-Community-H/issues"
+    "url": "https://github.com/developer-yechan/Anonymous-Forum/issues"
   },
-  "homepage": "https://github.com/pre-onboarding-4th-team-H/01-Community-H#readme",
+  "homepage": "https://github.com/developer-yechan/Anonymous-Forum#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -134,6 +135,7 @@
     "express": "^4.18.1",
     "express-validator": "^6.14.2",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.21.4",
@@ -145,6 +147,7 @@
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.0.2",
     "mocha": "^10.0.0",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
@@ -154,6 +157,7 @@
     "swagger-ui-express": "^4.5.0"
   }
 }
+
 ```
 
 # ⚡ 기술 스택
@@ -161,10 +165,7 @@
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/Sequelize-007396?style=for-the-badge&logo=Sequelize&logoColor=white">
 <img src="https://img.shields.io/badge/Swagger-61DAFB?style=for-the-badge&logo=Swagger&logoColor=white"> <img src="https://img.shields.io/badge/Mocha-F8DC75?style=for-the-badge&logo=Mocha&logoColor=white">
 
-# ✋ 역할분담 및 트러블 슈팅
+# ✋ 트러블 슈팅
 
-|  | 담당 역할 | 이슈 / 해결과정 |
+| 이슈 / 해결과정 |
 | --- | --- | --- |
-| 김예찬 | - 모델링 / 자유게시판 CRUD, 운영 게시판 CRUD 구현, 통계 구현 <br> - swagger 설정, freeBoard swagger 작성 | swagger 문서 작성이나 유저 테이블에서 성별로 groupby 했을 때 각 성별에 따른 유저 인원 수를 확인하는 기능을 구현하는 과정에서 여러 문제가 있었는데 구글링을 통해 여러 문서를 참고하면서 문제를 하나씩 해결해나갔습니다. |
-| 이무열 | - 모델링 / USER CRUD, 통계모델링 및 구현, validator 구현<br> - testcase 작성, user swagger 작성 / 코드 리팩토링 <br> - 깃허브 repository 생성 및 설정 | 로컬 브랜치에서 유저 회원가입 API 기능 구현 완료 후 develop 브랜치에 PR을 요청했는데, 충돌이 발생했습니다. 그동안 혼자서 프로젝트를 진행해오다 보니 충돌을 피하면서 개발을 진행을 해와서 충돌 이슈에 제대로 대처하지 못하고 있었는데 예찬님, 경서님의 도움으로 충돌 해결할 수 있었습니다. |
-| 조경서 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- 모델링 / 공지사항 CRUD, login, category CRUD 구현 <br>- 로그인 검증, 관리자 등급 검증, 에러 미들웨어 구현 <br>- ESLint, prettier 설정 / 코드 리팩토링 / noticeBoard, operateBoard swagger 작성 <br>- README, 노션 회의록 작성 | postman으로 요청을 보내서 CRUD 기능 구현을 확인하기 위해서 회원가입을 하였는데 DB에 데이터가 들어가지 않았습니다. 기존 id에 uuid로 적용하고 DB를 재생성하지 않아서 발생한 문제였습니다. 무열님의 도움으로 app.js에서 sequelize 속성 중 force를 true로 놓고 서버 재구동을 하니 DB가 재생성되면서 변경사항이 적용되어 해결했습니다. |
