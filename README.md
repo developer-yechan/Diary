@@ -21,7 +21,7 @@
 
 # 🚩 Diary Service 
 
-** Diary Service **
+**이모지 사용이 가능하고 날씨 정보가 자동 저장 되는 Diary Service**
 
 ### ✔ 기능 설명
 
@@ -47,7 +47,7 @@
 # 📑 API 문서
 1) npm start로 서버 구동 -> localhost/{port}/api-docs
 
-2)[diary_api_swagger.pdf](https://github.com/developer-yechan/Anonymous-Forum/files/9522948/diary_api_swagger.pdf)
+2) [diary_api_swagger.pdf](https://github.com/developer-yechan/Anonymous-Forum/files/9522948/diary_api_swagger.pdf)
 
 
 # 📜 테스트 케이스
@@ -169,3 +169,6 @@
 
 | 이슈 / 해결과정 |
 | --- | --- | --- |
+- 비밀번호 조건으로 6자 이상 하나 이상의 숫자 포함이 있었는데 정규식이 익숙치 않아 공부하고 적용하느라 시간이 걸렸지만 구현했습니다.
+- 테스트 케이스 작성이 처음이라 해맸지만 같이 프리 온보딩 코스를 진행하는 팀원들의 도움으로 해결했습니다.
+- 에러핸들러 함수를 미들웨어로 적용하여 에러 처리를 해주었지만 아직 완벽하게 모든 에러를 잘 핸들링 해주지는 못하고 있어  보완할 에정입니다.
