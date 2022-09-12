@@ -1,5 +1,5 @@
+# 서비스 성격이 익명 게시판 보다는 일기가 더 맞는 것 같아서 Anonymous-Forum 에서 Diary로 이름 변경
 # 🔗목차
-[Diary Service](#-Diary Service)
 
 [요구사항 분석](#-요구사항-분석)
 
